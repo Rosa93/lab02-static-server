@@ -1,0 +1,26 @@
+{
+  "name": "lab02-static-server",
+  "description": "Servidor web estatico en node",
+  "main": "server.js",
+  "authors": [
+    "rosa.paez9308@gmail.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "node",
+    "static-server",
+    "web"
+  ],
+  "homepage": "https://github.com/Rosa93/lab02-static-server",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sweetalert": "^1.1.3"
+  }
+}

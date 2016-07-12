@@ -2,32 +2,28 @@
 var http = require("http");
 var fs= require('fs');
 var config = require("./config/config.js");
-// Obteniendo las configuraciones 
-// del modulo de configuracion 
-var PORT = config.PORT;
-var IP = config.IP;
+var staticServer = require('./internals/static-server');
+var colors = require('colors');
+// Obteniendo información del entorno
+// De ejecución con respecto al IP
+// y al puerto que debemos usar en
+// nuestro server.
+var PORT = process.env.PORT || 3000;
+var IP = process.env.IP || '127.0.0.1';
 if (IP=='127.0.0.1'){
     console.log(">-----EJECUTANDO EN MODO LOCAL");
 }
 // Crear un servidor basico
 var server = http.createServer(function(req, res){
-    // Armar la respuesta http
-    // Armar un encabezado http
-    res.writeHead(200,{
-        "Content-Type" : "text/html",
-        "Server" : "ITGAM@4.2.4"
-    });
-    // Lectura del arcghivo as ervir 
-    fs.readFile('./static/index.html',
-    'utf8',function(err, content){
-        if(err){
-            res.write("<h1>ERROR DE LECTURA</h1>");
-            
-        }else{
-            res.end(content);
-            
-        }
-    });
+    //obtener la URL
+    var url = req.url;
+    console.log(`> URL solicitada: ${url}...` .yellow );
+    if(url == "/"){
+        //sirve el index.html
+        url = "/index.html"
+    }
+    //sirve la url con mi server statico 
+    staticServer.serve(url,res);   
     
 });
 // Poner a trabjar al server
