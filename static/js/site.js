@@ -3,7 +3,8 @@ function hola(){
     sweetAlert("World Places",
     "¡Bienvenido a esta pagina!");
     alert("Bienvenido a esta pagina ");
-    document.body.style.backgroundColor = "lightseagreen"
+    document.body.style.backgroundColor = 
+    "lightseagreen";
 }
 
 function changeBkgColor(){
